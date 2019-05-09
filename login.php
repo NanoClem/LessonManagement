@@ -1,7 +1,7 @@
 <head>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="login_style.css" />
-    <title>Formulaire</title>
+    <title>Connexion</title>
   </head>
 
   <body>
