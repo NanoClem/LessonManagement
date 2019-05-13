@@ -44,11 +44,20 @@
 
 
     /**
+     * FERMER LA CONNEXION
+     */
+    public function disconnect()
+    {
+      $this->PDO_BDD = null;
+    }
+
+
+    /**
      * SELECTIONNE LES DONNEES ISSUES DE LA REQUETE
      * @param $sql : requete sql de selection
      * @return : renvoie le resultat sous forme de tableau associatif
      */
-    public function select($sql) {
+    public function select($sql, $fetchMode = PDO::FETCH_ASSOC) {
       try {
         $query = $this->PDO_BDD->prepare($sql);   // preparation de la requete (contre les injections)
         $query->execute();                        // execution de la requete
@@ -57,7 +66,7 @@
         die('<div style="font-weight:bold; color:red">Erreur : '.$e->getMessage().'</div>');
       }
 
-      return $query->fetchAll(PDO::FETCH_ASSOC);  // chaque ligne est un tableau indexe
+      return $query->fetchAll($fetchMode);  // chaque ligne est un tableau indexe
     }
 
 
@@ -78,11 +87,11 @@
 
 
     /**
-     * FERMER LA CONNEXION
+     * RECUPERATION DE LA DERNIERE LIGNE INSEREE
+     * @return : id de la derniere ligne insérée
      */
-    public function disconnect()
-    {
-      $this->PDO_BDD = null;
+    public function getLastInsertID() {
+      return $this->PDO_BDD->lastInsertId();
     }
 
 
@@ -108,8 +117,6 @@
         }
       echo '</table>';
     }
-
-
   }
 
 ?>

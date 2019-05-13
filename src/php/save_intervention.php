@@ -1,23 +1,25 @@
 <?php
-/* il faut recuperer l'id de la demande correspondate (id_dem) afin d'ajouter la nouvelle ligne d'intervention
-*/
-	require('src/bdd/Database.php');
-	
-	$db = new Database();
-	
-	$data = [
-		if (isset ($_POST['nb_heures'])) 'nb_heures' => $_POST['nb_heures'];,
-		if (isset ($_POST['nature'])) 'nature' => $_POST['nature']; /*,
-		'id_dem' => ??? */
-		];
-	
-	$query = "INSERT INTO intervention(nb_heures, nature) VALUES (:nb_heures, :nb_values)"; //ajouter id_dem
-	
-	$db->insert($query, $data);
-	
-	
-	
-	
-	
-	header("Location: ./gestion_batiment.php?page=3");  //redirige la page //ou est ce qu'on redirige la page ?
+	require('../bdd/Database.php');
+
+
+	if( isset($_POST['nb_heures']) && isset($_POST['nature']) ) 
+    {
+        // DONNEES A INSERER
+        $data = [
+            "heures" => $_POST['nb_heures'],
+			"nature" => $_POST['nature']
+			//"id_dem" => "id de la demande concernee"
+        ];
+        
+        // TRAITEMENT BDD : TODO insérer l'id de la demande concernée par l'intervention
+        $db = new Database();
+        $sql = "INSERT INTO intervention(nb_heures, nature) VALUES(:heures, :nature)";
+        $db->insert($sql, $data);
+
+        // REDIRECTION VERS LA CONSULTATION DES DEMANDES
+        header("Location: page/page_2.inc.php");
+    }
+    else {
+        header("Location: page/page_2.inc.php");
+    }
 ?>
