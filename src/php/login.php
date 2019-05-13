@@ -21,13 +21,13 @@
                     $_SESSION[$col] = $data;            // donnees de la requête dans la session
                 }
             }
-            header('Location: ../views/menu.html');     // TODO : montrer une page differente selon le statut de la personne
+            header('Location: ../views/menu.php');      // TODO : montrer une page differente selon le statut de la personne
         }
         else {
-            header('Location: index.php');              // si aucun match : retour au login
+            header('Location: /../../index.html');      // si aucun match : retour au login
         }
     }
     else {
-        header('Location: index.php');                  // si il n'y a pas de donnees POST : retour au login
+        header('Location: ../../../index.html');        // si il n'y a pas de donnees POST : retour au login
     }
 ?>
