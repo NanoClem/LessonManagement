@@ -6,7 +6,7 @@
     <title></title>
     <meta content="info">
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="assets/css/lesson_style.css" />
+    <link rel="stylesheet" href="../../assets/css/lesson_style.css" />
   </head>
   
   <body>
@@ -28,8 +28,7 @@
         $page=$_GET["page"];
       }
       $encours[$page] = "encours";
-       
-      echo "<li><a href=\"?page=0\" class=\"btn_menu $encours[0]\">Accueil</a></li>\n";
+      
       echo "<li><a href=\"?page=1\" class=\"btn_menu $encours[1]\">Demandes</a></li>\n";
       echo "<li><a href=\"?page=2\" class=\"btn_menu $encours[2]\">Etat</a></li> \n";
       ?> 
