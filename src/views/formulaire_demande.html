@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html> 
+
+   <head>
+      <meta charset="UTF-8">
+      <link rel="stylesheet" href="../../assets/css/formulaire.css" />
+      <title> formulaire de demande </title>
+   </head>
+
+   <body> 
+
+      <div class="place_form">
+
+         <!-- FORMULAIRE DE DEMANDE -->
+         <form action="formulaireDemande.php" method="post" >
+
+            <!-- OBJET DE LA DEMANDE -->
+            <fieldset>
+               <legend> Objet de la demande : </legend>
+               <input type="titre" name="titre" size="20" maxlength="40" placeholder="objet" id="titre" required />
+            </fieldset>
+   
+            <!-- DESCRIPTION -->
+            <fieldset>
+               <legend> Description :</legend>
+               <textarea name="description" id="description" cols="20" rows="4" required></textarea>
+            </fieldset>
+   
+            <p>
+            <input type="submit" value="Envoyer" />
+            <input type="reset" value="Annuler" />
+            </p>
+   
+         </form>
+
+      </div>
+      
+   </body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

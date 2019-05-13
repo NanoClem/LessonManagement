@@ -24,7 +24,8 @@
 
         if( !isset($_GET["page"]) ) { 
           $page=0;
-        }else{
+        }
+        else {
           $page=$_GET["page"];
         }
         $encours[$page] = "encours";
@@ -36,11 +37,11 @@
     </div>
   
     <div id="contenu">
-    <?php
-      if( file_exists("page_".$page.".inc.php") ){ 
-        include("page_".$page.".inc.php");
-      }
-    ?>
+      <?php
+        if( file_exists("../php/page/page_".$page.".inc.php") ) { 
+          include("../php/page/page_".$page.".inc.php");
+        }
+      ?>
     </div>
   
     <div id="pied">

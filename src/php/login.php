@@ -24,7 +24,7 @@
             header('Location: ../views/menu.php');      // TODO : montrer une page differente selon le statut de la personne
         }
         else {
-            header('Location: /../../index.html');      // si aucun match : retour au login
+            header('Location: ../../../index.html');      // si aucun match : retour au login
         }
     }
     else {
