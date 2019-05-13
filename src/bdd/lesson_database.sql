@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le :  lun. 13 mai 2019 à 13:36
+-- Généré le :  lun. 13 mai 2019 à 13:58
 -- Version du serveur :  5.7.24
 -- Version de PHP :  7.2.11
 
@@ -152,6 +152,7 @@ CREATE TABLE `personne` (
   `nom` varchar(100) DEFAULT NULL,
   `prenom` varchar(100) DEFAULT NULL,
   `mail` varchar(255) DEFAULT NULL,
+  `mdp` varchar(50) NOT NULL,
   `statut` enum('etu','prof','interv') DEFAULT NULL,
   `id_form` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
