@@ -6,7 +6,7 @@
     <title></title>
     <meta content="info">
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="lesson_style.css" />
+    <link rel="stylesheet" href="assets/css/lesson_style.css" />
   </head>
   
   <body>
