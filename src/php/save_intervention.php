@@ -1,7 +1,7 @@
 <?php
 /* il faut recuperer l'id de la demande correspondate (id_dem) afin d'ajouter la nouvelle ligne d'intervention
 */
-	require('Database.php');
+	require('src/bdd/Database.php');
 	
 	$db = new Database();
 	
