@@ -1,104 +1,75 @@
-CREATE TYPE form AS ENUM ('IDU', 'IAI', 'MM', 'ITII');
-
-CREATE TYPE statut AS ENUM ('etu', 'prof', 'int');
-
-CREATE TYPE avancement AS ENUM ('en cours de validation', 'valide par l'enseignant', 'valide par l'intervenant');
-
-CREATE TYPE nat AS ENUM ('explication', 'TD', 'TP');
-
-CREATE TYPE type_fichier AS ENUM ('pdf', 'txt', 'png', 'jpeg');
-
-
-
 
 CREATE TABLE formation (
-	id_form INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-	type form
+	id_form INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	nom ENUM('IDU', 'IAI', 'MM', 'ITII')
 );
 
-
-
 CREATE TABLE matiere (
-	id_mat INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	id_mat INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	libelle VARCHAR(100)
 );
 
-CREATE TABLE mat_to_pers (
-	id_mat INT FOREIGN KEY REFERENCES matiere(id_mat),
-	id_pers INT FOREIGN KEY REFERENCES personne(id_pers),
-	PRIMARY KEY (id_mat, id_pers)
-);
-
-
-
-CREATE TABLE expertise (
-	id_exp INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-	domaine VARCHAR(100),
-	description VARCHAR(255)
-);
-
-CREATE TABLE exp_to_pers (
-	id_exp INT FOREIGN KEY REFERENCES expertise(id_exp),
-	id_pers INT FOREIGN KEY REFERENCES personne(id_pers),
-	PRIMARY KEY (id_exp, id_pers)
-);
-
-
-
-
-
-
-
 CREATE TABLE personne (
-	id_pers INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	id_pers INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	nom VARCHAR(100),
 	prenom VARCHAR(100),
 	mail VARCHAR(255),
-	type statut,
-	id_form INT FOREIGN KEY REFERENCES formation(id_form)
+	statut ENUM('etu', 'prof', 'interv'),
+	id_form INTEGER,
+	CONSTRAINT FK_PersFormation FOREIGN KEY(id_form) REFERENCES formation(id_form)
 );
 
-
-
-
-
+CREATE TABLE expertise (
+	id_exp INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	domaine VARCHAR(100),
+	descr VARCHAR(255)
+);
 
 CREATE TABLE intervention (
-	id_int INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	id_int INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	nb_heures TIME,
-	nature nat
+	nature ENUM('explications', 'TD', 'TP')
 );
 
-
 CREATE TABLE fichier (
-	id_fic INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	id_fic INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	chemin VARCHAR(100),
-	type type_fichier,
+	extension ENUM('pdf', 'txt', 'png', 'jpeg'),
 	taille FLOAT
 );
 
-
-
-
 CREATE TABLE demande (
-	id_dem INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	id_dem INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	titre VARCHAR(100),
-	description VARCHAR(255),
-	etat avancement,
+	descr VARCHAR(255),
+	etat ENUM('en cours de validation', 'valide par un enseignant', 'valide par un expert'),
 	
-	id_intervention INT FOREIGN KEY REFERENCES intervention(id_intervention),
-	id_fic INT FOREIGN KEY REFERENCES fichier(id_fichier)
+	id_intervention INTEGER,
+	id_fic INTEGER,
+	CONSTRAINT FK_DemInterv FOREIGN KEY(id_intervention) REFERENCES intervention(id_int),
+	CONSTRAINT FK_DemFic FOREIGN KEY(id_fic) REFERENCES fichier(id_fic)
 );
 
-
 CREATE TABLE traite (
-	id_dem INT FOREIGN KEY REFERENCES demande(id_dem),
-	id_pers INT FOREIGN KEY REFERENCES personne(id_pers),
+	id_dem INTEGER,
+	id_pers INTEGER,
+	CONSTRAINT FK_TraiteDemande FOREIGN KEY(id_dem) REFERENCES demande(id_dem),
+	CONSTRAINT FK_TraitePers FOREIGN KEY(id_pers) REFERENCES personne(id_pers),
 	PRIMARY KEY (id_dem, id_pers)
 );
 
+CREATE TABLE mat_to_pers (
+	id_mat INTEGER,
+	id_pers INTEGER,
+	CONSTRAINT FK_Mat2Pers1 FOREIGN KEY(id_mat) REFERENCES matiere(id_mat),
+	CONSTRAINT FK_Mat2Pers2 FOREIGN KEY(id_pers) REFERENCES personne(id_pers),
+	PRIMARY KEY (id_mat, id_pers)
+);
 
-
-
-
-
+CREATE TABLE exp_to_pers (
+	id_exp INTEGER,
+	id_pers INTEGER,
+	CONSTRAINT FK_Exp2Pers1 FOREIGN KEY(id_exp) REFERENCES expertise(id_exp),
+	CONSTRAINT FK_Exp2Pers2 FOREIGN KEY(id_pers) REFERENCES personne(id_pers),
+	PRIMARY KEY (id_exp, id_pers)
+);
