@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+	<head> 
+		<title>
+			Formulaire d'intervention
+		</title>
+		
+		<meta charset="UTF-8"> 
+		
+		<link rel="stylesheet" type="text/css" href="../../assets/css/formulaire.css"/>
+
+	</head>
+	
+	<body>
+	
+		<div id="form">
+			<form method="post" action="../bdd/save_intervention.php">
+				
+				<h1>Formulaire d'intervention</h1>
+				
+				<p>
+					<label>Nombre d'heures que l'expert a effectuees</label> <input type="text" name="nb_heures" /> <br/>
+					<label>Nature de l'intervention</label>
+						<select name="nature">
+						<option>explications
+						<option>TD
+						<option>TP
+						</select> <br/><br/>
+					<input id="bouton" type="submit" value="Valider">
+				</p>
+	
+	</body>
+
+
+
+</html>
