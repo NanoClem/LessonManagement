@@ -3,8 +3,9 @@
 
 
 	if( session_status() == PHP_SESSION_ACTIVE) {
-		include("../views/navigation.html");
+		include("../views/templates/navigation.html");
 		include("../views/formulaire_demande.html");
+		include("../views/templates/footer.html");
 	}
 	else {
 		header('Location: ../../../index.html');

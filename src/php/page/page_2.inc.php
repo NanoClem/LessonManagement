@@ -3,7 +3,7 @@
 
 
     if( session_status() == PHP_SESSION_ACTIVE) {
-		  include("../views/navigation.html");
+		  include("../views/templates/navigation.html");
     }
     else {
 		  header('Location: ../../../index.html');
