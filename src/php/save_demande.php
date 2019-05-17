@@ -1,5 +1,6 @@
 <?php
     require("../bdd/Database.php");
+    require('../configs/session_configs.php');
 
 
     if( session_status() == PHP_SESSION_ACTIVE)
@@ -18,7 +19,7 @@
             ];
     
             // INSERTION TABLE DEMANDE
-            $sqlDem   = "INSERT INTO demande(titre, desciption) VALUES(:titre, :descr)";
+            $sqlDem   = "INSERT INTO demande(titre, descr) VALUES(:titre, :descr)";
             $db->insert($sqlDem, $dataDem);
             
 
