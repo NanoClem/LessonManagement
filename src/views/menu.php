@@ -20,18 +20,18 @@
     <div id="menu">
       <ul id="lemenu">
       <?php  
-        $encours = array(" "," "," "," "," ");
+          $encours = array(" "," "," "," "," ");
 
-        if( !isset($_GET["page"]) ) { 
-          $page=0;
-        }
-        else {
-          $page=$_GET["page"];
-        }
-        $encours[$page] = "encours";
-        
-        echo "<li><a href=\"?page=1\" class=\"btn_menu $encours[1]\">Demandes</a></li>\n";
-        echo "<li><a href=\"?page=2\" class=\"btn_menu $encours[2]\">Etat</a></li> \n";
+          if( !isset($_GET["page"]) ) { 
+            $page=0;
+          }
+          else {
+            $page=$_GET["page"];
+          }
+          $encours[$page] = "encours";
+          
+          echo "<li><a href=\"?page=1\" class=\"btn_menu $encours[1]\">Demandes</a></li>\n";
+          echo "<li><a href=\"?page=2\" class=\"btn_menu $encours[2]\">Etat</a></li> \n";
       ?> 
       </ul>
     </div>

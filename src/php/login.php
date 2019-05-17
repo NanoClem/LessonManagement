@@ -22,7 +22,7 @@
                 }
             }
             // TODO : montrer une page differente selon le statut de la personne
-            header('Location: ../views/menu.php');      
+            header('Location: ../views/menu.php?page=1');   // etudiant      
         }
         else {
             header('Location: ../../../index.html');      // si aucun match : retour au login

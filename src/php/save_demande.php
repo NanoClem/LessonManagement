@@ -1,5 +1,6 @@
 <?php
     require("../bdd/Database.php");
+    require('../configs/session_configs.php');
 
 
     if( session_status() == PHP_SESSION_ACTIVE)
@@ -14,11 +15,12 @@
             #TODO : pouvoir stocker un fichier (soit dans bdd, soit dans des dossiers du site)
             $dataDem = [
                 "titre" => $_POST['titre'],
-                "descr" => $_POST['description']
+                "descr" => $_POST['description'],
+                "etat"  => "en cours de validation"
             ];
     
             // INSERTION TABLE DEMANDE
-            $sqlDem   = "INSERT INTO demande(titre, desciption) VALUES(:titre, :descr)";
+            $sqlDem   = "INSERT INTO demande(titre, descr, etat) VALUES(:titre, :descr, :etat)";
             $db->insert($sqlDem, $dataDem);
             
 
@@ -38,7 +40,7 @@
             /*=========================================
                 REDIRECTION CONSULTATION DES DEMANDES
             ==========================================*/
-            header("Location: page/page_2.inc.php");
+            header("Location: ../views/menu.php?page=2");
         }
         else {
             header("Location: page/page_1.inc.php");
