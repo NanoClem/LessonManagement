@@ -14,7 +14,7 @@
 	
 	<body>
 	
-	<form class="form-horizontal" action="/action_page.php">
+	<form class="form-horizontal" method="post" action="/action_page.php">
 		<!--Nombre d'heures -->
 		<div class="form-group">
 			<label class="control-label col-sm-2" for="intervention">Nombre d'heures</label>

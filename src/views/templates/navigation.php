@@ -12,8 +12,11 @@
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
 
-      <!-- FORMULAIRE DEMANDES -->
-      <a class="nav-item nav-link" href="#">Demandes</a>
+      <!-- FORMULAIRE DE DEMANDE -->
+      <a class="nav-item nav-link" href="formulaire_demande.php">Demander</a>
+
+      <!-- ETAT DES DEMANDES -->
+      <a class="nav-item nav-link" href="etat_demandes.php">Consulter les demandes</a>
 
       <!-- MESSAGERIE -->
       <a class="nav-item nav-link" href="contact.php">Messagerie</a>

@@ -5,7 +5,7 @@
 
     if( session_status() == PHP_SESSION_ACTIVE)
     {
-        if( isset($_POST['titre']) && isset($_POST['description']) ) 
+        if( isset($_POST['objet']) && isset($_POST['descr']) ) 
         {
             $db = new Database();
 
@@ -14,13 +14,13 @@
             ==========================================*/
             #TODO : pouvoir stocker un fichier (soit dans bdd, soit dans des dossiers du site)
             $dataDem = [
-                "titre" => $_POST['titre'],
-                "descr" => $_POST['description'],
+                "objet" => $_POST['objet'],
+                "descr" => $_POST['descr'],
                 "etat"  => "en cours de validation"
             ];
     
             // INSERTION TABLE DEMANDE
-            $sqlDem   = "INSERT INTO demande(titre, descr, etat) VALUES(:titre, :descr, :etat)";
+            $sqlDem   = "INSERT INTO demande(titre, descr, etat) VALUES(:objet, :descr, :etat)";
             $db->insert($sqlDem, $dataDem);
             
 
@@ -40,10 +40,10 @@
             /*=========================================
                 REDIRECTION CONSULTATION DES DEMANDES
             ==========================================*/
-            header("Location: ../views/menu.php?page=2");
+            header("Location: ../views/etat_demandes.php");
         }
         else {
-            header("Location: page/page_1.inc.php");
+            header("Location: ../views/formulaire_demande.php");
         }
     }
     else {
