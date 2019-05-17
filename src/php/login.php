@@ -15,25 +15,16 @@
 
         //TEST DE MATCHING DU COUPLE
         if(count($result) == 1) {                       // si le couple matche
-            session_start();                            // nouvelle session
+            session_start();                            // demarrage d'une nouvelle session
             foreach($result as $line) {
                 foreach($line as $col => $data) {
                     $_SESSION[$col] = $data;            // donnees de la requête dans la session
                 }
             }
-            // TODO : montrer une page differente selon le statut de la personne
-            $statut = $_SESSION['statut'];
-
-            if($statut == "etu") {
-                header('Location: ../views/menu.php?page=1');
-            }
-            elseif($statut = "prof" || $statut == "interv") {
-
-            }
-              
+            header('Location: ../views/accueil.php');   // redirection vers la page d'accueil
         }
         else {
-            header('Location: ../../../index.html');      // si aucun match : retour au login
+            header('Location: ../../../index.html');    // si aucun match : retour au login
         }
     }
     else {
