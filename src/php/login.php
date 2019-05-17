@@ -21,7 +21,8 @@
                     $_SESSION[$col] = $data;            // donnees de la requête dans la session
                 }
             }
-            header('Location: ../views/menu.php');      // TODO : montrer une page differente selon le statut de la personne
+            // TODO : montrer une page differente selon le statut de la personne
+            header('Location: ../views/menu.php');      
         }
         else {
             header('Location: ../../../index.html');      // si aucun match : retour au login

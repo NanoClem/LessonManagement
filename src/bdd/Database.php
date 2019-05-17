@@ -1,5 +1,5 @@
 <?php
-  require('config_bd.php');
+  require('../configs/config_bd.php');
 
 
   class Database {
