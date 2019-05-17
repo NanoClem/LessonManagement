@@ -66,7 +66,7 @@
         die('<div style="font-weight:bold; color:red">Erreur : '.$e->getMessage().'</div>');
       }
 
-      return $query->fetch($fetchMode);
+      return $query->fetchAll($fetchMode);
     }
 
 

@@ -15,8 +15,8 @@
 
             <thead>
                 <tr>
-                <th scope="col">Objet de la demande</th>
-                <th scope="col">Etat</th>
+                    <th scope="col">Etat</th>
+                    <th scope="col">Objet de la demande</th>
                 </tr>
             </thead>
 
