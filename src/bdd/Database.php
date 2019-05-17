@@ -66,7 +66,7 @@
         die('<div style="font-weight:bold; color:red">Erreur : '.$e->getMessage().'</div>');
       }
 
-      return $query->fetchAll($fetchMode);  // chaque ligne est un tableau indexe
+      return $query->fetch($fetchMode);
     }
 
 

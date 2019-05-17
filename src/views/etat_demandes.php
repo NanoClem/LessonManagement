@@ -21,7 +21,10 @@
             </thead>
 
             <tbody>
-                <tr>
+                <!-- INCLUDE FICHIER PHP -->
+                <?php require("../php/get_demandes.php") ?>
+
+                <!-- <tr>
                 <td>Mark</td>
                 <td>Otto</td>
                 </tr>
@@ -29,7 +32,7 @@
                 <tr>
                 <td>Jacob</td>
                 <td>Thornton</td>
-                </tr>
+                </tr> -->
 
             </tbody>
 
