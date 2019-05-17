@@ -3,9 +3,9 @@
 
 
     if( session_status() == PHP_SESSION_ACTIVE) {
-		include("../views/navigation.html");
+		  include("../views/navigation.html");
     }
     else {
-		header('Location: ../../../index.html');
+		  header('Location: ../../../index.html');
 	}
 ?>
