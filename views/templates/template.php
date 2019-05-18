@@ -8,11 +8,11 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     </head>
 
-    <body>
+    <body style="background-color:#b2dfdb;">
         <?= $content ?>
     </body>
 
-    <footer class="page-footer fixed-bottom" style="background-color: #1C2331; color: white;">
+    <footer class="page-footer fixed-bottom" style="background-color:#1C2331; color: white;">
         <div class="footer-copyright text-center py-3">&copy Copyright 2019 :
             <a href="https://www.polytech.univ-savoie.fr/">Polytech Annecy</a>
         </div>

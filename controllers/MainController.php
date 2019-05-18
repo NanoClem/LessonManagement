@@ -1,5 +1,4 @@
 <?php
-    require("models/Database.php");
     require("LoginController.php");
 
 
@@ -11,6 +10,26 @@
      */
     class MainController
     {
+        /**
+         * Gestions des connexions et autorisations de consultation
+         */
+        private $loginControl;
+
+
+        /**
+         * CONSTRUCTEUR DE CLASSE MainController
+         */
+        public function __construct() {
+            $this->loginControl = new LoginController();
+        }
+
+        /**
+         * DESTRUCTEUR DE CLASSE MainController
+         */
+        public function __destruct() {
+        }
+
+        
         /**
          * Accès à la page d'accueil
          */
@@ -50,7 +69,7 @@
          * Accès a la page de login
          */
         public function login() {
-            require("views/login.php");
+            require("views/forms/form_login.php");
         }
     }
 

@@ -6,7 +6,19 @@
 
     <?php require("navbars/home_navbar.php"); ?>
 
-    
+    <!-- TABLEAU DES DEMANDES EFFECTUEES -->
+    <table class="table table-hover" style="margin-top:50px;">
+        <thead>
+            <tr>
+                <th scope="col">Etat</th>
+                <th scope="col">Objet de la demande</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <!-- CONTENU DE LA TABLE -->
+        </tbody>
+    </table>
 
 
 

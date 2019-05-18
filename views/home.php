@@ -6,7 +6,7 @@
 
     <?php require("navbars/home_navbar.php"); ?>
 
-    <div class="jumbotron text-center" style="margin-bottom:0; background-color:#b2dfdb;">
+    <div class="jumbotron text-center" style="margin-bottom:0; background-color:#80cbc4;">
         <h1>ASKIT</h1>
         <p>Contactez un expert pour mieux avancer dans vos projets</p> 
     </div>

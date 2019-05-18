@@ -1,7 +1,5 @@
 <?php
     require("controllers/MainController.php");
-    require("controllers/LoginController.php");
-
     $router = new MainController();
 
 

@@ -16,7 +16,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
+            <!-- <tr>
             <td>Mark</td>
             <td>Otto</td>
             <td>@mdo</td>
@@ -26,7 +26,7 @@
             <td>Jacob</td>
             <td>Thornton</td>
             <td>@fat</td>
-            </tr>
+            </tr> -->
         </tbody>
     </table>
 
