@@ -1,5 +1,5 @@
 <?php
-    require("LoginController.php");
+    require_once("LoginController.php");
 
 
     /**
@@ -40,35 +40,35 @@
         /**
          * Accès au formulaire des demandes
          */
-        public function askForm() {
+        public function getAskForm() {
             require("views/forms/form_ask.php");
         }
 
         /**
          * Accès au formulaire des interventions
          */
-        public function intervForm() {
+        public function getIntervForm() {
             require("views/forms/form_interv.php");
         }
 
         /**
          * Accès aux consultation de l'état des demandes
          */
-        public function askState() {
+        public function getAskState() {
             require("views/state.php");
         }
 
         /**
          * Accès aux contacts
          */
-        public function contacts() {
+        public function getContacts() {
             require("views/contact.php");
         }
 
         /**
          * Accès a la page de login
          */
-        public function login() {
+        public function getLogin() {
             require("views/forms/form_login.php");
         }
     }

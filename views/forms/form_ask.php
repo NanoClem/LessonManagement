@@ -3,11 +3,11 @@
 <?php ob_start()  //donnees mises en tampon au lieu de l'envoie au navigateur ?>
 
 
-
+    <link rel="stylesheet" type="text/css" href="public/css/form_style.css" />
     <?php require("views/navbars/home_navbar.php"); ?>
 
 
-    <form class="form-horizontal" style="margin-top:50px; margin-left:15px;" method="post" action="#">
+    <form class="my_form form-horizontal" method="post" action="\?page=send_demande">
 
         <!-- OBJET -->
         <div class="form-group">

@@ -1,45 +1,27 @@
 <?php
-    require("controllers/MainController.php");
+    require_once("controllers/MainController.php");
+    require_once("controllers/FormController.php");
     $router = new MainController();
+    $formManager = new FormController();
 
 
-    if( isset($_GET['page']) )
-    {
+    if( isset($_GET['page']) ) :
+
         $page = $_GET['page'];
 
-        //PAGE D'ACCUEIL
-        if($page == "home") {
-            $router->home();
-        }
+        if($page == "home") : $router->home();                         // PAGE D'ACCUEIL
+        elseif($page == "demandes") : $router->getAskForm();           // FORMULAIRE DES DEMANDES
+        elseif($page == "etat") : $router->getAskState();              // CONSULTATION ETAT DES DEMANDES
+        elseif($page == "interventions") : $router->getIntervForm();   // INTERVENTIONS
+        elseif($page == "contact") : $router->getContacts();           // LISTE DES CONTACTS     
+        elseif($page == "login") : $router->getLogin();                // LOGIN
 
-        //FORMULAIRE DES DEMANDES
-        elseif($page == "demandes") {
-            $router->askForm();
-        }
+        elseif($page == "send_demande") : $formManager->sendAsk();  // ENVOI D'UNE DEMANDE
+        
+        endif;
 
-        //CONSULTATION ETAT DES DEMANDES
-        elseif($page == "etat") {
-            $router->askState();
-        }
-
-        //INTERVENTIONS
-        elseif($page == "interventions") {
-            $router->intervForm();
-        }
-
-        //LISTE DES CONTACTS
-        elseif($page == "contact") {
-            $router->contacts();
-        }
-
-        //LOGIN
-        elseif($page == "login") {
-            $router->login();
-        }
-    }
-    else {
+    else :
         $router->home();
-    }
 
-
+    endif;
 ?>

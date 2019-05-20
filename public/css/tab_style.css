@@ -1,0 +1,13 @@
+/* Style for table display */
+
+table {
+    margin-top: 50px;
+}
+
+.my_thead {
+    text-align: center;
+}
+
+.my_th {
+    text-align: center;
+}

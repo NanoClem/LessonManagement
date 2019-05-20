@@ -3,7 +3,7 @@
 <?php ob_start()  //donnees mises en tampon au lieu de l'envoie au navigateur ?>
 
 
-
+    <link rel="stylesheet" type="text/css" href="public/css/form_style.css" />
     <?php require("views/navbars/home_navbar.php"); ?>
 
     
