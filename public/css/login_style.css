@@ -21,13 +21,13 @@
   text-align: center;
   border: 2px solid #3498db;
   padding: 14px 10px;
-  width: 200px;
+  width: 220px;
   outline: none;
   color: white;
   border-radius: 24px;
   transition: 0.25s;
 }
-.box input[type = "email"],.box input[type = "password"]{
+.box input[type = "email"],.box input[type = "password"] {
   width: 280px;
   border-color: #2ecc71;
 }

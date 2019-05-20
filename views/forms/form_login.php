@@ -9,7 +9,7 @@
 
     <form class="box" method="post" name="formUSR" action="#">
         <h1>Login</h1>
-        <input type="text" id="login" name="login" placeholder="Mail" size="50" pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" required />
+        <input type="email" id="login" name="login" placeholder="Mail" size="50" pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" required />
         <script src="public/js/customValidationMessage.js"></script>
         <input type="password" id="passwd" name="passwd" placeholder="password" size="50" required />
         <input type="submit" value="Login" />
