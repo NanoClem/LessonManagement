@@ -1,5 +1,5 @@
 <?php
-  require('configs/config_bd.php');
+  require_once('configs/config_bd.php');
 
 
   class Database {
@@ -46,8 +46,7 @@
     /**
      * FERMER LA CONNEXION
      */
-    public function disconnect()
-    {
+    public function disconnect() {
       $this->PDO_BDD = null;
     }
 

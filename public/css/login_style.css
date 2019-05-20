@@ -21,14 +21,14 @@
   text-align: center;
   border: 2px solid #3498db;
   padding: 14px 10px;
-  width: 220px;
+  width: 240px;
   outline: none;
   color: white;
   border-radius: 24px;
   transition: 0.25s;
 }
-.box input[type = "email"],.box input[type = "password"] {
-  width: 280px;
+.box input[type = "email"]:focus,.box input[type = "password"]:focus {
+  width: 230px;
   border-color: #2ecc71;
 }
 .box input[type = "submit"]{

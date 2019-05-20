@@ -34,11 +34,11 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <?php if(session_status() == PHP_SESSION_ACTIVE): ?>
-                        <a class="nav-link" href="#">Deconnexion</a>
+                        <a class="nav-link" href="\?page=deconnexion">Deconnexion</a>
                 </li>
                 <li class="nav-item">
                     <?php else: ?>
-                        <a class="nav-link" href="\?page=login">Connexion</a>
+                        <a class="nav-link" href="\?page=connexion">Connexion</a>
                 </li>
             </ul>
         </div>

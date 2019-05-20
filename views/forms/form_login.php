@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="public/css/login_style.css" />
     <?php require("views/navbars/home_navbar.php"); ?>
 
-    <form class="box" method="post" name="formUSR" action="#">
+    <form class="box" method="post" name="formUSR" action="\?page=send_login">
         <h1>Login</h1>
         <input type="email" id="login" name="login" placeholder="Mail" size="50" pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" required />
         <script src="public/js/customValidationMessage.js"></script>
