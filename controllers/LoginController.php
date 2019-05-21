@@ -33,6 +33,21 @@
 
 
         /**
+         * Verifie si un visiteur est connecte
+         */
+        public function isLoged() 
+        {
+            session_start();
+            $ret = false;
+            if( session_status() == PHP_SESSION_ACTIVE && !empty($_SESSION)) {
+                $ret = true;
+            }
+
+            return $ret;
+        }
+
+
+        /**
          * Connexion d'un utilisateur enregistre
          */
         public function login() 
@@ -46,7 +61,6 @@
                     foreach($data as $col => $row) {
                         $_SESSION[$col] = $row;         // donnees de session
                     }
-
                     header("Location: \?page=demandes");
                     exit();
                 }
@@ -61,9 +75,11 @@
         /**
          * Deconnexion
          */
-        public function logout() {
+        public function logout() 
+        {
+            session_start();
+            session_unset();         // suppression des champs de la session
             session_destroy();        // destruction de la session courrante
-            unset($_SESSION);         // suppression des champs de la session
             header("Location: \?page=home");
             exit();
         }

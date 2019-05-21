@@ -29,7 +29,6 @@
         public function __destruct() {
         }
 
-        
         /**
          * Accès à la page d'accueil
          */
@@ -38,38 +37,50 @@
         }
 
         /**
+         * Accès a la page de login
+         */
+        public function getLogin() {
+            require("views/forms/form_login.php");
+        }
+
+        /**
          * Accès au formulaire des demandes
          */
-        public function getAskForm() {
-            require("views/forms/form_ask.php");
+        public function getAskForm() 
+        {
+            if($this->loginControl->isLoged()) : require("views/forms/form_ask.php");
+            else : $this->getLogin();
+            endif;
         }
 
         /**
          * Accès au formulaire des interventions
          */
-        public function getIntervForm() {
-            require("views/forms/form_interv.php");
+        public function getIntervForm() 
+        {
+            if($this->loginControl->isLoged()) : require("views/forms/form_interv.php");
+            else : $this->getLogin();
+            endif;
         }
 
         /**
          * Accès aux consultation de l'état des demandes
          */
-        public function getAskState() {
-            require("views/state.php");
+        public function getAskState() 
+        {
+            if($this->loginControl->isLoged()) : require("views/state.php");
+            else : $this->getLogin();
+            endif;
         }
 
         /**
          * Accès aux contacts
          */
-        public function getContacts() {
-            require("views/contact.php");
-        }
-
-        /**
-         * Accès a la page de login
-         */
-        public function getLogin() {
-            require("views/forms/form_login.php");
+        public function getContacts() 
+        {
+            if($this->loginControl->isLoged()) : require("views/contact.php");
+            else : $this->getLogin();
+            endif;
         }
     }
 

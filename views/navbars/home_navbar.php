@@ -33,7 +33,7 @@
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <?php if(session_status() == PHP_SESSION_ACTIVE): ?>
+                    <?php if(session_status() == PHP_SESSION_ACTIVE && !empty($_SESSION)): ?>
                         <a class="nav-link" href="\?page=deconnexion">Deconnexion</a>
                 </li>
                 <li class="nav-item">
