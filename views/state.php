@@ -16,7 +16,7 @@
         </thead>
 
         <tbody>
-            <!-- CONTENU DE LA TABLE -->
+            
         </tbody>
     </table>
 
