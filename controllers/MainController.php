@@ -33,6 +33,7 @@
          * Accès à la page d'accueil
          */
         public function home() {
+            session_start();
             require("views/home.php");
         }
 
