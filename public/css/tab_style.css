@@ -11,3 +11,7 @@ table {
 .my_th {
     text-align: center;
 }
+
+.my_td {
+    text-indent: 15%;
+}

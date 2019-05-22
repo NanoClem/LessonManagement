@@ -7,28 +7,42 @@
     <?php require("navbars/home_navbar.php"); ?>
 
     <!-- TABLEAU DES ENSEIGNANTS/INTERVENANTS -->
-    <table class="table table-hover">
-        <thead>
-            <tr>
-            <th class="my_th" scope="col">Identité</th>
-            <th class="my_th" scope="col">fonction</th>
-            <th class="my_th" scope="col">Mail</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- <tr>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-            </tr>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th class="my_th" scope="col">IDENTITE</th>
+                    <th class="my_th" scope="col">MAIL</th>
+                    <th class="my_th" scope="col">COURS</th>
+                    <th class="my_th" scope="col">FONCTION</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php if( isset($_SESSION['contacts']) ): ?> 
 
-            <tr>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr> -->
-        </tbody>
-    </table>
+                        <!-- AFFICHAGE DES CONTACTS -->
+                        <?php foreach($_SESSION['contacts'] as $row): ?>
+                            <tr>
+                                <td class="my_td" style="text-indent:15%;"> 
+                                    <?= htmlspecialchars( strtoupper($row['nom']) ); ?>
+                                    <?= htmlspecialchars( $row['prenom'] ); ?>
+                                </td>
+                                <td>
+                                    <?= htmlspecialchars( $row['mail']); ?>
+                                </td>
+                                <td>
+                                    <?= htmlspecialchars( $row['libelle'] ); ?>
+                                </td>
+                                <td>
+                                    <?= htmlspecialchars( $row['statut'] ); ?>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    
+                <?php endif; ?>
+            </tbody>
+        </table>
+    </div>
 
 
 

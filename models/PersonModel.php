@@ -40,6 +40,26 @@
       return $query->fetch(PDO::FETCH_ASSOC);
     }
 
+
+    /**
+     * Selectionne les donnees de contact d'une personne
+     */
+    public function getContacts()
+    {
+      try {
+        $query = $this->db->prepare("SELECT nom, prenom, mail, statut, libelle 
+                                    FROM personne P JOIN mat_to_pers M ON P.id_pers = M.id_pers
+                                                    JOIN matiere Mat on M.id_mat = Mat.id_mat
+                                    WHERE statut = 'prof' OR statut = 'interv' ");
+        $query->execute();
+      }
+      catch(Exception $e) {
+        die('<div style="font-weight:bold; color:red">Erreur : '.$e->getMessage().'</div>');
+      }
+
+      return $query->fetchAll(PDO::FETCH_ASSOC);
+    }
+
   }
 
 ?>

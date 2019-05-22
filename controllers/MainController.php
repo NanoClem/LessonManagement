@@ -1,5 +1,7 @@
 <?php
     require_once("LoginController.php");
+    require_once("DisplayController.php");
+    require_once("models/PersonModel.php");
 
 
     /**
@@ -15,12 +17,18 @@
          */
         private $loginControl;
 
+        /**
+         * Gestion de l'affichage des donnees
+         */
+        private $displayControl;
+
 
         /**
          * CONSTRUCTEUR DE CLASSE MainController
          */
         public function __construct() {
-            $this->loginControl = new LoginController();
+            $this->loginControl   = new LoginController();
+            $this->displayControl = new DisplayController(); 
         }
 
         /**
@@ -67,21 +75,29 @@
         /**
          * Accès aux consultation de l'état des demandes
          */
-        public function getAskState() 
+        public function getAskState()
         {
-            if($this->loginControl->isLoged()) : require("views/state.php");
-            else : $this->getLogin();
-            endif;
+            if($this->loginControl->isLoged()) {
+                $this->displayControl->getDataAskState();     // sauvegarde $_SESSION des donnees
+                require("views/state.php");
+            }
+            else {
+                $this->getLogin();
+            }
         }
 
         /**
          * Accès aux contacts
          */
-        public function getContacts() 
+        public function getContacts()
         {
-            if($this->loginControl->isLoged()) : require("views/contact.php");
-            else : $this->getLogin();
-            endif;
+            if($this->loginControl->isLoged()) {
+                $this->displayControl->getDataContacts();     // sauvegarde $_SESSION des donnees
+                require("views/contact.php");
+            }
+            else {
+                $this->getLogin();
+            }
         }
     }
 

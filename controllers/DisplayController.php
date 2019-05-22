@@ -1,9 +1,10 @@
 <?php
+    require_once("models/AskModel.php");
     require_once("models/PersonModel.php");
 
 
     /**
-     * Constitue le controller se chargeant d'afficher les données
+     * Constitue le controller se chargeant des donnees a afficher
      * 
      * @author decoopmc
      * @version 1.0
@@ -15,12 +16,18 @@
          */
         private $display;
 
+        /**
+         * Objet Model pour les personnes
+         */
+        private $person;
+
 
         /**
          * CONSTRUCTEUR
          */
         public function __construct() {
-            $this->ask = new AskModel();
+            $this->ask    = new AskModel();
+            $this->person = new PersonModel();
         }
 
         /**
@@ -31,11 +38,17 @@
         }
 
         /**
-         * Affiche les donnees sur l'etat des demandes
+         * Recupere les donnees sur l'etat des demandes
          */
-        public function displayAskState() 
-        {
-            print_r( $this->ask->getAsk($_SESSION['id_pers']) );
+        public function getDataAskState() {
+            $_SESSION['demandes'] = $this->ask->getAsks($_SESSION['id_pers']);
+        }
+
+        /**
+         * Recupere les donnees des personnes a contacter (prof/interv)
+         */
+        public function getDataContacts() {
+            $_SESSION['contacts'] = $this->person->getContacts();
         }
     }
 

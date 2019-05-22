@@ -45,24 +45,22 @@
      * Retourne les donnees des demandes effectuees par un user
      * #TODO : ameliorer en faisant 1 seule requete pour les demandes (methode IN())
      */
-    public function getAsk($id_pers)
+    public function getAsks($id_pers)
     {
-      $res = array();   // donnees a retourner
-
       try {
         $data = $this->getAskIDs($id_pers);   // ids des demandes
-        foreach($data as $askID) {
-          $query = $this->db->prepare("SELECT titre, etat FROM demande WHERE id_dem = :id");
-          $query->bindValue(":id", $askID, PDO::PARAM_INT);
-          $query->execute();
-          $res = array_merge($res, $query->fetch(PDO::FETCH_ASSOC));
-        }
+        $query = $this->db->prepare("SELECT titre, etat 
+                                     FROM demande D JOIN traite T   ON D.id_dem = T.id_dem
+                                     JOIN personne P ON T.id_pers = P.id_pers
+                                     WHERE P.id_pers = :id");
+        $query->bindValue(":id", $id_pers, PDO::PARAM_INT);
+        $query->execute();
       }
       catch(Exception $e) {
         die('<div style="font-weight:bold; color:red">Erreur : '.$e->getMessage().'</div>');
       }
 
-      return $res;
+      return $query->fetchAll(PDO::FETCH_ASSOC);
     }
 
 

@@ -1,7 +1,6 @@
 <?php
     require_once("controllers/MainController.php");
     require_once("controllers/FormController.php");
-    require_once("controllers/FormController.php");
 
     $router = new MainController();
     $formManager  = new FormController();
