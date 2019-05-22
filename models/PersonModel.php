@@ -43,14 +43,15 @@
 
     /**
      * Selectionne les donnees de contact d'une personne
+     * #TODO : ameliorer la requete pour selectionner aussi des intervenants (avec leur domaine d'expertise)
      */
     public function getContacts()
     {
       try {
-        $query = $this->db->prepare("SELECT nom, prenom, mail, statut, libelle 
-                                    FROM personne P JOIN mat_to_pers M ON P.id_pers = M.id_pers
-                                                    JOIN matiere Mat on M.id_mat = Mat.id_mat
-                                    WHERE statut = 'prof' OR statut = 'interv' ");
+        $query = $this->db->prepare("SELECT nom, prenom, mail, statut, libelle
+                                    FROM matiere NATURAL JOIN mat_to_pers
+                                                 NATURAL JOIN personne
+                                    WHERE statut = 'prof' ");
         $query->execute();
       }
       catch(Exception $e) {
