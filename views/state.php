@@ -11,8 +11,8 @@
         <table class="table table-hover">
             <thead class="my_thead">
                 <tr>
-                    <th scope="col">ETAT</th>
                     <th scope="col">OBJET DE LA DEMANDE</th>
+                    <th scope="col">ETAT</th>
                 </tr>
             </thead>
 

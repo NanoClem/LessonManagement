@@ -79,7 +79,7 @@
         {
             session_start();
             session_unset();         // suppression des champs de la session
-            session_destroy();        // destruction de la session courrante
+            session_destroy();       // destruction de la session courrante
             header("Location: \?page=home");
             exit();
         }
