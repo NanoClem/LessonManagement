@@ -50,7 +50,7 @@
       try {
         $query = $this->db->prepare("SELECT titre, etat 
                                      FROM demande D JOIN traite T ON D.id_dem = T.id_dem
-                                     JOIN personne P ON T.id_pers = P.id_pers
+                                     JOIN personne P ON T.id_etu = P.id_pers
                                      WHERE P.id_pers = :id");
         $query->bindValue(":id", $id_pers, PDO::PARAM_INT);
         $query->execute();
@@ -66,7 +66,7 @@
     /**
      * Ajoute une demande dans la BDD
      */
-    public function addAsk($id_pers) 
+    public function addAsk($id_etu, $id_prof = 0)   // temp : creer nouveau champ formulaire
     {
       try {
         // TABLE DEMANDE
@@ -77,9 +77,10 @@
 
         // TABLE TRAITE
         $lastID = $this->db->lastInsertId();     // id de la demande venant d'etre inseree
-        $queryTrait = $this->db->prepare("INSERT INTO traite(id_dem, id_pers) VALUES(:dem, :pers)");
+        $queryTrait = $this->db->prepare("INSERT INTO traite(id_dem, id_etu, id_prof) VALUES(:dem, :etu, :prof)");
         $queryTrait->bindParam(':dem', $lastID);
-        $queryTrait->bindParam(':pers', $id_pers);
+        $queryTrait->bindParam(':etu', $id_etu);
+        $queryTrait->bindParam(':prof', $id_prof);
         $queryTrait->execute();
       }
       catch(Exception $e) {
