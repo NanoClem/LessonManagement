@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le :  lun. 13 mai 2019 à 13:58
+-- Généré le :  mer. 29 mai 2019 à 12:29
 -- Version du serveur :  5.7.24
 -- Version de PHP :  7.2.11
 
@@ -21,8 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `lesson_database`
 --
-CREATE DATABASE IF NOT EXISTS `lesson_database` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `lesson_database`;
 
 -- --------------------------------------------------------
 
@@ -34,9 +32,20 @@ CREATE TABLE `demande` (
   `id_dem` int(11) NOT NULL,
   `titre` varchar(100) DEFAULT NULL,
   `descr` varchar(255) DEFAULT NULL,
-  `etat` varchar(50) DEFAULT NULL,
+  `etat` enum('en cours de validation','validee par un enseignant','validee par un expert','') DEFAULT NULL,
   `id_fic` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `demande`
+--
+
+INSERT INTO `demande` (`id_dem`, `titre`, `descr`, `etat`, `id_fic`) VALUES
+(1, 'Révisions rattrapages', 'Bonjour', 'en cours de validation', NULL),
+(2, 'Heures communes entre les groupes', 'd', 'en cours de validation', NULL),
+(3, 'Approfondir la DataScience en 3A', 'd', 'en cours de validation', NULL),
+(4, 'lol', 'd', 'en cours de validation', NULL),
+(5, 'lol', 'd', 'en cours de validation', NULL);
 
 -- --------------------------------------------------------
 
@@ -50,6 +59,15 @@ CREATE TABLE `expertise` (
   `descr` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Déchargement des données de la table `expertise`
+--
+
+INSERT INTO `expertise` (`id_exp`, `domaine`, `descr`) VALUES
+(1, 'Data-Science', 'Collecte, Traitement et Exploitation des données'),
+(2, 'Physique', 'Théorie des cordes'),
+(3, 'Orienté Objet', 'Programmation et conception orientés objet');
+
 -- --------------------------------------------------------
 
 --
@@ -60,6 +78,14 @@ CREATE TABLE `exp_to_pers` (
   `id_exp` int(11) NOT NULL,
   `id_pers` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `exp_to_pers`
+--
+
+INSERT INTO `exp_to_pers` (`id_exp`, `id_pers`) VALUES
+(1, 205),
+(3, 207);
 
 -- --------------------------------------------------------
 
@@ -141,6 +167,14 @@ CREATE TABLE `mat_to_pers` (
   `id_pers` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Déchargement des données de la table `mat_to_pers`
+--
+
+INSERT INTO `mat_to_pers` (`id_mat`, `id_pers`) VALUES
+(5, 204),
+(4, 206);
+
 -- --------------------------------------------------------
 
 --
@@ -157,6 +191,18 @@ CREATE TABLE `personne` (
   `id_form` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Déchargement des données de la table `personne`
+--
+
+INSERT INTO `personne` (`id_pers`, `nom`, `prenom`, `mail`, `mdp`, `statut`, `id_form`) VALUES
+(0, 'GOD', 'Mister', 'god@gmail.com', 'a4757d7419ff3b48e92e90596f0e7548', 'prof', NULL),
+(103, 'DECOOPMAN', 'Clément', 'clem@gmail.com', 'ab6c040066603ef2519d512b21dce9ab', 'etu', 1),
+(204, 'Mariton', 'Tanguy', 'randoo@gmail.com', '7ddf32e17a6ac5ce04a8ecbf782ca509', 'prof', NULL),
+(205, 'Rosa-Martin', 'Jesus', 'jesus@gmail.com', '110d46fcd978c24f306cd7fa23464d73', 'interv', NULL),
+(206, 'Petit', 'David', 'dadou@gmail.com', '4cb9749ed0deccc9927687401967a193', 'prof', NULL),
+(207, 'Nasri', 'Chiheb', 'chichi@gmail.com', '4805df3f93d2fd44d85d536abab5b7a8', 'interv', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -165,8 +211,19 @@ CREATE TABLE `personne` (
 
 CREATE TABLE `traite` (
   `id_dem` int(11) NOT NULL,
-  `id_pers` int(11) NOT NULL
+  `id_etu` int(11) NOT NULL,
+  `id_prof` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `traite`
+--
+
+INSERT INTO `traite` (`id_dem`, `id_etu`, `id_prof`) VALUES
+(1, 103, 0),
+(2, 103, 0),
+(3, 103, 0),
+(5, 103, 0);
 
 --
 -- Index pour les tables déchargées
@@ -235,8 +292,9 @@ ALTER TABLE `personne`
 -- Index pour la table `traite`
 --
 ALTER TABLE `traite`
-  ADD PRIMARY KEY (`id_dem`,`id_pers`),
-  ADD KEY `FK_TraitePers` (`id_pers`);
+  ADD PRIMARY KEY (`id_dem`,`id_etu`,`id_prof`),
+  ADD KEY `FK_TraiteProf` (`id_prof`),
+  ADD KEY `FK_TraiteEtu` (`id_etu`);
 
 --
 -- AUTO_INCREMENT pour les tables déchargées
@@ -246,13 +304,13 @@ ALTER TABLE `traite`
 -- AUTO_INCREMENT pour la table `demande`
 --
 ALTER TABLE `demande`
-  MODIFY `id_dem` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_dem` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT pour la table `expertise`
 --
 ALTER TABLE `expertise`
-  MODIFY `id_exp` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_exp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `fichier`
@@ -282,7 +340,7 @@ ALTER TABLE `matiere`
 -- AUTO_INCREMENT pour la table `personne`
 --
 ALTER TABLE `personne`
-  MODIFY `id_pers` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pers` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=209;
 
 --
 -- Contraintes pour les tables déchargées
@@ -324,8 +382,9 @@ ALTER TABLE `personne`
 -- Contraintes pour la table `traite`
 --
 ALTER TABLE `traite`
-  ADD CONSTRAINT `FK_TraiteDemande` FOREIGN KEY (`id_dem`) REFERENCES `demande` (`id_dem`),
-  ADD CONSTRAINT `FK_TraitePers` FOREIGN KEY (`id_pers`) REFERENCES `personne` (`id_pers`);
+  ADD CONSTRAINT `FK_TraiteDem` FOREIGN KEY (`id_dem`) REFERENCES `demande` (`id_dem`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `FK_TraiteEtu` FOREIGN KEY (`id_etu`) REFERENCES `personne` (`id_pers`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `FK_TraiteProf` FOREIGN KEY (`id_prof`) REFERENCES `personne` (`id_pers`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
