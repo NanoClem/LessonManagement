@@ -24,9 +24,6 @@
         <li class="nav-item">
             <a class="nav-link" href="\?page=contact">Messagerie</a>
         </li>
-        <li class="nav-item">>
-
-        </li>
     </ul>
 
     <!-- PARTIE DROITE -->
