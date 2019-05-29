@@ -12,21 +12,6 @@
             <li class="nav-item active">
                 <a class="navbar-brand" href="\?page=home"">Accueil</a>
             </li>
-            <li>
-                <a class="nav-link" href="\?page=demandes">Demander</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="\?page=etat">Consulter les demandes</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="\?page=interventions">Interventions</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="\?page=contact">Messagerie</a>
-            </li>
-            <li class="nav-item">>
-
-            </li>
         </ul>
 
         <!-- PARTIE DROITE -->

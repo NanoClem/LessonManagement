@@ -5,7 +5,6 @@
 
 
     <link rel="stylesheet" type="text/css" href="public/css/login_style.css" />
-    <?php require("views/navbars/home_navbar.php"); ?>
 
     <form class="box" method="post" name="formUSR" action="\?page=send_login">
         <h1>Login</h1>

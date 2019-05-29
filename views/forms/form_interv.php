@@ -4,7 +4,6 @@
 
 
     <link rel="stylesheet" type="text/css" href="public/css/form_style.css" />
-    <?php require("views/navbars/home_navbar.php"); ?>
 
     
 

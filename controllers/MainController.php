@@ -1,6 +1,7 @@
 <?php
     require_once("LoginController.php");
     require_once("DisplayController.php");
+    require_once("NavbarController.php");
     require_once("models/PersonModel.php");
 
 
@@ -22,13 +23,19 @@
          */
         private $displayControl;
 
+        /**
+         * Gestion de l'affichage des barres de menu
+         */
+        private $navbarControl;
+
 
         /**
          * CONSTRUCTEUR DE CLASSE MainController
          */
         public function __construct() {
             $this->loginControl   = new LoginController();
-            $this->displayControl = new DisplayController(); 
+            $this->displayControl = new DisplayController();
+            $this->navbarControl = new NavbarController(); 
         }
 
         /**
@@ -40,15 +47,24 @@
         /**
          * Accès à la page d'accueil
          */
-        public function home() {
-            session_start();
-            require("views/home.php");
+        public function home() 
+        {
+            if( $this->loginControl->isLoged() ) {
+                $this->navbarControl->getNavbar();
+                require("views/home.php");
+            }
+            else {
+                $this->navbarControl->getLogoutNavbar();
+                require("views/home.php");
+            }
+            
         }
 
         /**
          * Accès a la page de login
          */
         public function getLogin() {
+            $this->navbarControl->getLogoutNavbar();
             require("views/forms/form_login.php");
         }
 
@@ -58,6 +74,7 @@
         public function getAskForm() 
         {
             if( $this->loginControl->isLoged() ) {
+                $this->navbarControl->getNavbar();
                 $this->displayControl->getProfs();            // sauvegarde $_SESSION des profs
                 require("views/forms/form_ask.php");
             } 
@@ -71,9 +88,13 @@
          */
         public function getIntervForm() 
         {
-            if($this->loginControl->isLoged()) : require("views/forms/form_interv.php");
-            else : $this->getLogin();
-            endif;
+            if($this->loginControl->isLoged()) {
+                $this->navbarControl->getNavbar();
+                require("views/forms/form_interv.php");
+            } 
+            else {
+                $this->getLogin();
+            } 
         }
 
         /**
@@ -82,6 +103,7 @@
         public function getAskState()
         {
             if($this->loginControl->isLoged()) {
+                $this->navbarControl->getNavbar();
                 $this->displayControl->getAskState();     // sauvegarde $_SESSION des etats
                 require("views/state.php");
             }
@@ -96,6 +118,7 @@
         public function getContacts()
         {
             if($this->loginControl->isLoged()) {
+                $this->navbarControl->getNavbar();
                 $this->displayControl->getContacts();     // sauvegarde $_SESSION des contacts
                 require("views/contact.php");
             }

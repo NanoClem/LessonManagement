@@ -4,7 +4,6 @@
 
 
     <link rel="stylesheet" type="text/css" href="public/css/tab_style.css" />
-    <?php require("navbars/home_navbar.php"); ?>
 
     <!-- TABLEAU DES ENSEIGNANTS/INTERVENANTS -->
     <div class="table-responsive">
