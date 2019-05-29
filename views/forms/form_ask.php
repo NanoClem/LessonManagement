@@ -20,7 +20,7 @@
         <div class="form-group">
             <div class="col-sm-4">
                 <select class="form-control" name="prof" id="prof" required>
-                    <option disabled selected>Choisir l'enseignant</option>
+                    <option value="" disabled selected>Choisir l'enseignant</option>
                     <?php if( isset($_SESSION['profs']) ) : ?>
                         <?php foreach($_SESSION['profs'] as $row) : ?>
                             <option> 

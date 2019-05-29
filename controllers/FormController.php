@@ -51,6 +51,10 @@
                     header("Location: \?page=etat");
                     exit();
                 }
+                else {
+                    header("Location: \?page=demandes");
+                    exit();
+                }
             }
             else {
                 header("Location: \?page=connexion");
