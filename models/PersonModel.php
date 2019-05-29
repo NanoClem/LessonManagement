@@ -45,7 +45,7 @@
      * Selectionne les donnees de contact d'une personne
      * #TODO : ameliorer la requete pour selectionner aussi des intervenants (avec leur domaine d'expertise)
      */
-    public function getContacts()
+    public function getDataContacts()
     {
       try {
         $query = $this->db->prepare("SELECT nom, prenom, mail, statut, libelle

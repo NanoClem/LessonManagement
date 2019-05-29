@@ -45,7 +45,7 @@
      * Retourne les donnees des demandes effectuees par un user
      * #TODO : ameliorer en faisant 1 seule requete pour les demandes (methode IN())
      */
-    public function getAsks($id_pers)
+    public function getDataAsks($id_pers)
     {
       try {
         $query = $this->db->prepare("SELECT titre, etat 

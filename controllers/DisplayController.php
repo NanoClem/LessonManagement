@@ -40,15 +40,22 @@
         /**
          * Recupere les donnees sur l'etat des demandes
          */
-        public function getDataAskState() {
-            $_SESSION['demandes'] = $this->ask->getAsks($_SESSION['id_pers']);
+        public function getAskState() {
+            $_SESSION['demandes'] = $this->ask->getDataAsks($_SESSION['id_pers']);
         }
 
         /**
          * Recupere les donnees des personnes a contacter (prof/interv)
          */
-        public function getDataContacts() {
-            $_SESSION['contacts'] = $this->person->getContacts();
+        public function getContacts() {
+            $_SESSION['contacts'] = $this->person->getDataContacts();
+        }
+
+        /**
+         * Recupere le nom et prenom des 'prof'
+         */
+        public function getProfs() {
+            $_SESSION['profs'] = $this->person->getDataProfs();
         }
     }
 

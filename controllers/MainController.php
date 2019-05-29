@@ -78,7 +78,7 @@
         public function getAskState()
         {
             if($this->loginControl->isLoged()) {
-                $this->displayControl->getDataAskState();     // sauvegarde $_SESSION des donnees
+                $this->displayControl->getAskState();     // sauvegarde $_SESSION des donnees
                 require("views/state.php");
             }
             else {
@@ -92,7 +92,7 @@
         public function getContacts()
         {
             if($this->loginControl->isLoged()) {
-                $this->displayControl->getDataContacts();     // sauvegarde $_SESSION des donnees
+                $this->displayControl->getContacts();     // sauvegarde $_SESSION des donnees
                 require("views/contact.php");
             }
             else {
