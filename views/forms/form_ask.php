@@ -17,6 +17,22 @@
             </div>
         </div>
 
+        <!-- SELECTION DU PROF -->
+        <div class="form-group">
+            <div class="col-sm-4">
+                <select class="form-control" name="prof" id="prof" required>
+                    <option disabled selected>Choisir l'enseignant</option>
+                    <?php if( isset($_SESSION['profs']) ) : ?>
+                        <?php foreach($_SESSION['profs'] as $row) : ?>
+                            <option> 
+                                <?= htmlspecialchars( strtoupper($row['nom'])." ".$row['prenom'] ); ?> 
+                            </option>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                </select>
+            </div>
+        </div>
+
         <!-- DESCRIPTION -->
         <div class="form-group">
             <label class="control-label col-sm-2" for="description">Description:</label>
@@ -37,7 +53,7 @@
 
 
 
-<?php $content = ob_get_clean()  //lecture du tampon puis l'efface ?>
+<?php $content = ob_get_clean();  //lecture du tampon puis l'efface ?>
 
 
 <!-- TEMPLATE -->

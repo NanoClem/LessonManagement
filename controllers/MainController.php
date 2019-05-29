@@ -57,9 +57,13 @@
          */
         public function getAskForm() 
         {
-            if($this->loginControl->isLoged()) : require("views/forms/form_ask.php");
-            else : $this->getLogin();
-            endif;
+            if( $this->loginControl->isLoged() ) {
+                $this->displayControl->getProfs();            // sauvegarde $_SESSION des profs
+                require("views/forms/form_ask.php");
+            } 
+            else {
+                $this->getLogin();
+            } 
         }
 
         /**
@@ -78,7 +82,7 @@
         public function getAskState()
         {
             if($this->loginControl->isLoged()) {
-                $this->displayControl->getAskState();     // sauvegarde $_SESSION des donnees
+                $this->displayControl->getAskState();     // sauvegarde $_SESSION des etats
                 require("views/state.php");
             }
             else {
@@ -92,7 +96,7 @@
         public function getContacts()
         {
             if($this->loginControl->isLoged()) {
-                $this->displayControl->getContacts();     // sauvegarde $_SESSION des donnees
+                $this->displayControl->getContacts();     // sauvegarde $_SESSION des contacts
                 require("views/contact.php");
             }
             else {

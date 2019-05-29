@@ -61,6 +61,23 @@
       return $query->fetchAll(PDO::FETCH_ASSOC);
     }
 
+
+    /**
+     * Retourne le nom et prenom de tous les profs
+     */
+    public function getDataProfs() 
+    {
+      try {
+        $query = $this->db->prepare("SELECT nom, prenom FROM personne WHERE statut = 'prof' ");
+        $query->execute();
+      }
+      catch(Exception $e) {
+        die('<div style="font-weight:bold; color:red">Erreur : '.$e->getMessage().'</div>');
+      }
+
+      return $query->fetchAll(PDO::FETCH_ASSOC);
+    }
+
   }
 
 ?>

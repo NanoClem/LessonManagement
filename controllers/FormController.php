@@ -44,8 +44,9 @@
         public function sendAsk() 
         {
             if($this->loginControl->isLoged()) {
-                if( isset($_POST['objet']) && isset($_POST['descr']) ) {
-                    $this->ask->addAsk($_SESSION['id_pers']);
+                if( isset($_POST['objet']) && isset($_POST['prof']) && isset($_POST['descr']) ) 
+                {
+                    $this->ask->addAsk($_SESSION['id_pers'], $_POST['objet'], $_POST['descr'], $_POST['prof']);
                     unset($_POST);
                     header("Location: \?page=etat");
                     exit();
